@@ -1,9 +1,9 @@
 <template>
   <transition name="slide">
-    <div class="add-song">
+    <div class="add-song" v-show="showFlag" @click.stop>
       <div class="header">
         <h1 class="title">添加到歌曲列表</h1>
-        <div class="close">
+        <div class="close" @click="hide">
           <i class="icon-close"></i>
         </div>
       </div>
@@ -33,7 +33,19 @@
   // import Song from 'common/js/song'
 
   export default {
-    
+    data(){
+      return {
+        showFlag:false
+      }
+    },
+    methods:{
+      show(){
+        this.showFlag = true
+      },
+      hide(){
+        this.showFlag = false
+      }
+    }
   }
 </script>
 
