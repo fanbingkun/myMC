@@ -68,7 +68,7 @@
                             <i class="icon-next" @click="next"></i>
                         </div>
                         <div class="icon i-right">
-                            <i class="icon icon-not-favorite"></i>
+                            <i class="icon" @click="toggleFavorite(currentSong)" :class="getFavoriteIcon(currentSong)"></i>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import {mapGetters,mapMutations} from 'vuex'
+import {mapGetters,mapMutations,mapActions} from 'vuex'
 import animations from 'create-keyframe-animation'
 import {prefixStyle} from 'common/js/dom'
 import ProgressBar from 'base/progress-bar/progress-bar'
@@ -339,6 +339,7 @@ export default {
         },
         ready(){
             this.songReady = true
+            this.savePlayHistory(this.currentSong)
         },
         error(){
             this.songReady = true
@@ -418,7 +419,10 @@ export default {
             setCurrentIndex: 'SET_CURRENT_INDEX',
             setPlayMode : 'SET_PLAY_MODE',
             setPlayList : 'SET_PLAYLIST'
-        })
+        }),
+        ...mapActions([
+            'savePlayHistory'
+        ])
     },
     watch:{
         currentSong(newSong,oldSong){

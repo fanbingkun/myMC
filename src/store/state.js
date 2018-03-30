@@ -1,5 +1,5 @@
 import {playMode} from 'common/js/config'
-import {loadSearch} from 'common/js/cache'
+import {loadSearch,loadPlay,loadFavorite} from 'common/js/cache'
 ///sequenceList 是当前的正常播放列表
 // playlist 是当前随机的播放列表
 const state = {
@@ -12,6 +12,8 @@ const state = {
     currentIndex:-1,
     disc:{},
     topList:{},
-    searchHistory:loadSearch()
+    searchHistory:loadSearch(),
+    playHistory:loadPlay(),
+    favoriteList:loadFavorite()
 }
 export default state
