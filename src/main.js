@@ -23,3 +23,7 @@ new Vue({
   store,
   render: h => h(App)
 })
+
+
+//移动端开发利器
+// vconsole    charies抓包工具

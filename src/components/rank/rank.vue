@@ -33,10 +33,7 @@
     export default {
       mixins:[playlistMixin],
       created(){
-        setTimeout(()=>{
-          this._getTopList()
-        },1000)
-        
+        this._getTopList()
       },
       data(){
         return {
